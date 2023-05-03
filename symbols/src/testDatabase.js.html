@@ -1,0 +1,45 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">Database</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./Database.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">RestockReport</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./RestockReport.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">Menu</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./Menu.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  4</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">Ingredients</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./Ingredients.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">NewMenuItem</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./NewMenuItem.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">XReport</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./XReport.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">SalesReport</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./SalesReport.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="NAME">import</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT"> </span><span class="NAME">ExcessReport</span><span class="WHIT"> </span><span class="PUNC">}</span><span class="WHIT"> </span><span class="NAME">from</span><span class="WHIT"> </span><span class="STRN">"./ExcessReport.js"</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="NAME">class</span><span class="WHIT"> </span><span class="NAME">testDatabase</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="WHIT">  </span><span class="NAME">constructor</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="WHIT">    </span><span class="NAME">this.db</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Database</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 13</span> 
+<span class='line'> 14</span> </span><span class="WHIT">  </span><span class="NAME">async</span><span class="WHIT"> </span><span class="NAME">getFirstFiveItems</span><span class="PUNC">(</span><span class="NAME">command</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 15</span> </span><span class="WHIT">    </span><span class="NAME">await</span><span class="WHIT"> </span><span class="NAME">this.db.connect</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 16</span> 
+<span class='line'> 17</span> </span><span class="WHIT">    </span><span class="KEYW">const</span><span class="WHIT"> </span><span class="NAME">sql</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">command</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="WHIT">    </span><span class="KEYW">const</span><span class="WHIT"> </span><span class="NAME">items</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">await</span><span class="WHIT"> </span><span class="NAME">this.db.query</span><span class="PUNC">(</span><span class="NAME">sql</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 19</span> 
+<span class='line'> 20</span> </span><span class="WHIT">    </span><span class="NAME">await</span><span class="WHIT"> </span><span class="NAME">this.db.disconnect</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 21</span> 
+<span class='line'> 22</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">items</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="WHIT">  </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 25</span> 
+<span class='line'> 26</span> </span><span class="NAME">async</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">main</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 27</span> </span><span class="WHIT">  </span><span class="COMM">// const ingredient = new Ingredients();</span><span class="WHIT">
+<span class='line'> 28</span> </span><span class="WHIT">  </span><span class="COMM">// ingredient.removeIngredient("Beef Slice");</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="WHIT">  </span><span class="COMM">// const menu = new Menu();</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">  </span><span class="COMM">// menu.removeItem("Beef Sandwich");</span><span class="WHIT">
+<span class='line'> 32</span> 
+<span class='line'> 33</span> </span><span class="WHIT">  </span><span class="KEYW">const</span><span class="WHIT"> </span><span class="NAME">report</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">ExcessReport</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="WHIT">  </span><span class="KEYW">const</span><span class="WHIT"> </span><span class="NAME">x</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">report.excessReport</span><span class="PUNC">(</span><span class="STRN">"2022-01-01"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="STRN">"2022-01-04"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="NAME">main</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span></pre></body></html>
